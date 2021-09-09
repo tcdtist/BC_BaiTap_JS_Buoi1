@@ -78,9 +78,11 @@ const handleChange = function (unit) {
   //Lấy giá trị
   var { value, idThongBao, idKetQua, idKetQua2 } = getDataByUnit(unit);
 
-  if (unit === 5 && value?.length > 2) {
+  if (unit === 5 && (10 > value || value >= 100)) {
+    console.log("abc");
     getEle(idThongBao).innerHTML = "(*) Số nhập phải là số có hai chữ số !";
     getEle(idThongBao).className = "form-text text-danger";
+    getEle(idKetQua).disabled = true;
   } else if (isNaN(value)) {
     getEle(idThongBao).innerHTML = "(*) Vui lòng nhập số thay vì ký tự !";
     getEle(idThongBao).className = "form-text text-danger";
